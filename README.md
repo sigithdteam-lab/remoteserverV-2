@@ -1,4 +1,4 @@
-# 🚀 Remote Server Management V2 (ManageServer) - Perbaikan versi sebelumnya (patching bug)
+# 🚀 Remote Server Management V2 (ManageServer) - (Fixing patching bug)
 
 **Remote Server Management V2** adalah toolkit Bash modular yang dirancang untuk mengelola banyak server Linux secara terpusat via SSH. Dilengkapi dengan Smart Tuning, Auto-Dependency, Safety Guards, dan Audit Log.
 
