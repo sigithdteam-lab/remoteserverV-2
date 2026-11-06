@@ -10,6 +10,16 @@
 5. **Security & Maintenance:** Firewall, ClamAV (Scan only default), Clean All vs Deep Clean.
 6. **Farm Server Provisioning:** Simple Load Balancer (HAProxy + Nginx + DB + NFS).
 
+### ⚙️ Analisis Fungsi (Engine & Keamanan)
+
+Di balik layar, script ini menggunakan arsitektur modular (bukan satu file besar):
+
+· Central Execution Layer (CEL): Semua perintah ke server target wajib lewat fungsi cel_remote_exec (untuk modifikasi) atau cel_remote_read (untuk baca saja). Ini mencegah eksekusi liar dan memastikan audit log tercatat.
+· Sudo Policy (NOPASSWD): Jika login SSH sebagai root, perintah jalan langsung. Jika login sebagai user biasa, script menggunakan sudo -n. Jika user tidak punya NOPASSWD, proses langsung berhenti (tidak menggantung minta password).
+· Host Key Policy: Menggunakan StrictHostKeyChecking=accept-new. Host baru diterima otomatis, tapi jika fingerprint berubah (indikasi MITM), koneksi ditolak dengan peringatan merah.
+· Legacy SSH Fallback: Otomatis mendeteksi jika server lama menolak algoritma modern, lalu beralih menggunakan ssh-rsa (SHA-1) secara aman.
+· Validasi Ketat (Validators): Semua input user (IP, Port, Username, Path ClamAV) divalidasi sebelum dieksekusi untuk mencegah Command Injection.
+
 ## 🛠️ Prasyarat (Dependencies)
 Tool ini membutuhkan paket di Controller. Jika belum terinstall, script akan menawarkan instalasi otomatis:
 - openssh-client, nmap, traceroute, dnsutils, whois, jq, openssl, net-tools.
@@ -26,6 +36,13 @@ Tool ini membutuhkan paket di Controller. Jika belum terinstall, script akan men
 ## 🖥️ Cara Penggunaan
 Jalankan script utama:
 `./remoteserver.sh`
+
+### Konfigurasi (Opsional):
+   Jika ingin mengubah default user atau menjalankan mode simulasi secara permanen, edit file ~/.remoteserver/config.conf(jika belum ada, buat file config.conf) isi berikut:
+   
+DEFAULT_SSH_USER="root"
+DRY_RUN="false"      # Ubah ke "true" untuk simulasi (tidak mengeksekusi)
+PARALLEL="false"     # Ubah ke "true" untuk eksekusi paralel
 
 ### Tampilan Menu Utama
 ```text
@@ -54,8 +71,3 @@ Jalankan script utama:
 ═══════════════════════════════════════════════════════════
 Pilih (0-10):
 
-### Konfigurasi (Opsional):
-   Jika ingin mengubah default user atau menjalankan mode simulasi secara permanen, edit file ~/.remoteserver/config.conf:
-DEFAULT_SSH_USER="root"
-DRY_RUN="false"      # Ubah ke "true" untuk simulasi (tidak mengeksekusi)
-PARALLEL="false"     # Ubah ke "true" untuk eksekusi paralel
