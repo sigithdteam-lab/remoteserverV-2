@@ -71,3 +71,102 @@ PARALLEL="false"     # Ubah ke "true" untuk eksekusi paralel
 ═══════════════════════════════════════════════════════════
 Pilih (0-10):
 
+
+
+### Tree menu:
+remoteserver.sh (Main Menu)
+│
+├── 1. SSH Key Management
+│   ├── 1. Generate SSH Keys (ed25519 + ecdsa + rsa)
+│   ├── 2. Import Public Keys (semua ke remote)
+│   ├── 3. Test Passwordless SSH
+│   ├── 4. Regenerate SSH Keys
+│   ├── 5. Repair SSH Key (local permissions)
+│   └── 6. Remove SSH Key (from remote)
+│
+├── 2. SSH & Server List Management
+│   ├── 1. Lihat list server
+│   ├── 2. Tambah server
+│   ├── 3. Hapus server (cleanup auth lokal)
+│   ├── 4. Verifikasi konsistensi (list vs known_hosts)
+│   ├── 5. Remote SSH (manual)
+│   └── 6. Remote SSH (from list)
+│
+├── 3. Server Maintainer
+│   ├── 1. Check pending updates
+│   ├── 2. Check pending reboot
+│   ├── 3. Update package lists
+│   ├── 4. Upgrade packages
+│   ├── 5. Update & Upgrade
+│   ├── 6. Repair package management
+│   ├── 7. Clean All (SAFE)
+│   ├── 8. Deep Clean (dry-run preview)
+│   └── 9. Deep Clean (REAL)
+│
+├── 4. Server Information
+│   ├── 1. Info Server (full system monitor)
+│   ├── 2. Check disk structure (lsblk)
+│   ├── 3. Check partition disk (fdisk)
+│   ├── 4. Check UUID & filesystem (blkid)
+│   └── 5. Health Check Dashboard
+│
+├── 5. User & Group Management
+│   ├── 1. User List
+│   ├── 2. Add user
+│   ├── 3. Delete user (5 lapis proteksi)
+│   ├── 4. Change password
+│   ├── 5. Lock/Unlock user (termasuk Lock+Kill)
+│   ├── 6. Group List
+│   ├── 7. Add group
+│   ├── 8. Delete group
+│   ├── 9. Add user to group
+│   └── 10. Remove user from group
+│
+├── 6. Security Management
+│   ├── 1. Firewall status
+│   ├── 2. Open ports
+│   ├── 3. Failed logins
+│   ├── 4. Firewall add rule (Allow/Drop/Reject)
+│   └── 5. Virus scan (ClamAV)
+│
+├── 7. Service Server Management
+│   ├── 1. Service status
+│   ├── 2. Stop service
+│   ├── 3. Start service
+│   └── 4. Restart service
+│
+├── 8. Basic Tools
+│   ├── 1. Ping subnet / IP / Range
+│   ├── 2. Traceroute
+│   ├── 3. dig
+│   ├── 4. nslookup
+│   ├── 5. whois
+│   ├── 6. Prefix Whois (APNIC)
+│   ├── 7. ASN Info
+│   ├── 8. Check MX
+│   ├── 9. Check PTR
+│   ├── 10. Check SPF
+│   └── 11. Check DMARC
+│
+├── 9. Server Tune-Up (Smart Tuning)
+│   ├── 1. Apache Auto-Tune (Stability / Performance)
+│   ├── 2. Nginx Auto-Tune (Stability / Performance)
+│   ├── 3. Database Auto-Tune (Shared / Dedicated)
+│   ├── 4. Apache Advanced Tune (Custom Workers)
+│   ├── 5. Nginx Advanced Tune (Custom Workers/Conn)
+│   ├── 6. Database Advanced Tune (Custom RAM MB)
+│   └── 7. Database Repair/Optimize
+│
+├── 10. Instalasi Server Management
+│   ├── 1. Install Apache + PHP
+│   ├── 2. Install Nginx + PHP-FPM
+│   ├── 3. Install MariaDB
+│   ├── 4. Install PostgreSQL
+│   ├── 5. Install LAMP
+│   ├── 6. Install LEMP
+│   ├── 7. Install LEPP
+│   └── 8. Farm Server Management (Sub-menu)
+│       ├── 1. True High Availability (HA)
+│       └── 2. Simple Load Balancer
+│
+└── 0. Exit
