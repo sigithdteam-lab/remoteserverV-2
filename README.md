@@ -38,13 +38,13 @@ Tool ini membutuhkan beberapa paket di *Controller** (mesin lokal). Jika belum t
    ```text
    root@192.168.1.10
    admsys@10.0.0.5:2222
-   203.119.13.20
+   10.20.30.40
    ```
 4. **(Opsional) Buat file Proxmox:**
    Buat file `proxmox-nodes.txt` untuk fitur Menu 11:
    ```text
-   root@203.119.13.4
-   root@203.119.13.181
+   root@192.168.1.2
+   root@192.168.3.4
    ```
 
 ---
